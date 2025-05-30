@@ -114,27 +114,6 @@ copy ufo\config\config.yaml.template ufo\config\config.yaml
 notepad ufo\config\config.yaml   # paste your key & endpoint
 ```
 
-#### OpenAI
-```yaml
-VISUAL_MODE: True, # Whether to use the visual mode
-API_TYPE: "openai" , # The API type, "openai" for the OpenAI API.  
-API_BASE: "https://api.openai.com/v1/chat/completions", # The the OpenAI API endpoint.
-API_KEY: "sk-",  # The OpenAI API key, begin with sk-
-API_VERSION: "2024-02-15-preview", # "2024-02-15-preview" by default
-API_MODEL: "gpt-4o",  # The only OpenAI model
-```
-
-#### Azure OpenAI (AOAI)
-```yaml
-VISUAL_MODE: True, # Whether to use the visual mode
-API_TYPE: "aoai" , # The API type, "aoai" for the Azure OpenAI.  
-API_BASE: "YOUR_ENDPOINT", #  The AOAI API address. Format: https://{your-resource-name}.openai.azure.com
-API_KEY: "YOUR_KEY",  # The aoai API key
-API_VERSION: "2024-02-15-preview", # "2024-02-15-preview" by default
-API_MODEL: "gpt-4o",  # The only OpenAI model
-API_DEPLOYMENT_ID: "YOUR_AOAI_DEPLOYMENT", # The deployment id for the AOAI API
-```
-
 #### Gemini
 ```yaml
 VISUAL_MODE: True, # Whether to use the visual mode
@@ -173,6 +152,16 @@ export GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
    - API_MODEL: 사용할 Gemini 모델 (gemini-2.5-flash-preview-05-20 또는 gemini-2.5-pro-preview-05-06)
 
 > Need Qwen, Gemini, non‑visual GPT‑4, or even **OpenAI CUA Operator** as a AppAgent? See the [model guide](https://microsoft.github.io/UFO/supported_models/overview/).
+
+#### OpenAI
+```yaml
+VISUAL_MODE: True, # Whether to use the visual mode
+API_TYPE: "openai" , # The API type, "openai" for the OpenAI API.  
+API_BASE: "https://api.openai.com/v1/chat/completions", # The the OpenAI API endpoint.
+API_KEY: "sk-",  # The OpenAI API key, begin with sk-
+API_VERSION: "2024-02-15-preview", # "2024-02-15-preview" by default
+API_MODEL: "gpt-4o",  # The only OpenAI model
+```
 
 ### 📔 Step 3: Additional Setting for RAG (optional).
 If you want to enhance UFO's ability with external knowledge, you can optionally configure it with an external database for retrieval augmented generation (RAG) in the `ufo/config/config.yaml` file. 
