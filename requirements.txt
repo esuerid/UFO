@@ -24,8 +24,8 @@ gradio-client==1.7.1
 ##For removing stopwords
 #nltk==3.8.1
 ##For Gemini
-# google-genai==1.12.1
-
+google-genai==1.12.1
+google-cloud-aiplatform==1.45.0
 
 ## If use AAD to authenticate
 azure_identity==1.20.0

@@ -45,7 +45,7 @@
 ---
 
 ## 📢 News
-- 📅 2025-04-19: Version **v2.0.0** Released! We’re excited to announce the release the **UFO²**! UFO² is a major upgrade to the original UFO, featuring with enhanced capabilities. It introduces the **AgentOS** concept, enabling seamless integration of multiple agents for complex tasks. Please check our [new technical report](https://arxiv.org/pdf/2504.14603) for more details.
+- 📅 2025-04-19: Version **v2.0.0** Released! We're excited to announce the release the **UFO²**! UFO² is a major upgrade to the original UFO, featuring with enhanced capabilities. It introduces the **AgentOS** concept, enabling seamless integration of multiple agents for complex tasks. Please check our [new technical report](https://arxiv.org/pdf/2504.14603) for more details.
 - 📅 ...
 - 📅 2024-02-14: Our [technical report](https://arxiv.org/abs/2402.07939) for UFO is online!
 - 📅 2024-02-10: The first version of UFO is released on GitHub🎈. Happy Chinese New year🐉!
@@ -102,6 +102,8 @@ cd UFO
 # install the requirements
 pip install -r requirements.txt
 # If you want to use the Qwen as your LLMs, uncomment the related libs.
+# If you want to use Gemini as your LLMs, install the following package:
+pip install google-cloud-aiplatform
 ```
 
 ### ⚙️ Step 2: Configure the LLMs
@@ -132,6 +134,43 @@ API_VERSION: "2024-02-15-preview", # "2024-02-15-preview" by default
 API_MODEL: "gpt-4o",  # The only OpenAI model
 API_DEPLOYMENT_ID: "YOUR_AOAI_DEPLOYMENT", # The deployment id for the AOAI API
 ```
+
+#### Gemini
+```yaml
+VISUAL_MODE: True, # Whether to use the visual mode
+API_TYPE: "gemini", # The API type for Google Gemini
+API_BASE: "https://generativelanguage.googleapis.com/v1beta/models", # The Gemini API endpoint
+API_KEY: "YOUR_API_KEY",  # Your Google API key
+API_VERSION: "v1beta", # Gemini API version
+API_MODEL: "gemini-2.5-flash-preview-05-20",  # Gemini model name
+PROJECT_ID: "YOUR_PROJECT_ID",  # Your Google Cloud project ID
+```
+
+Gemini 모델을 사용하기 위해서는 다음 단계를 따라주세요:
+
+1. Google Cloud Console에서 프로젝트 생성 및 API 키 발급:
+   - [Google Cloud Console](https://console.cloud.google.com/)에 접속
+   - 새 프로젝트 생성 또는 기존 프로젝트 선택
+   - Vertex AI API 활성화
+   - API 키 생성 (IAM 및 관리 > 서비스 계정 > 키 만들기)
+
+2. 필요한 패키지 설치:
+```bash
+pip install google-cloud-aiplatform google-genai
+```
+
+3. 환경 변수 설정 (선택사항):
+```bash
+# Windows
+set GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
+# Linux/Mac
+export GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
+```
+
+4. config.yaml 파일에서 다음 설정 확인:
+   - API_KEY: Google Cloud Console에서 발급받은 API 키
+   - PROJECT_ID: Google Cloud 프로젝트 ID
+   - API_MODEL: 사용할 Gemini 모델 (gemini-2.5-flash-preview-05-20 또는 gemini-2.5-pro-preview-05-06)
 
 > Need Qwen, Gemini, non‑visual GPT‑4, or even **OpenAI CUA Operator** as a AppAgent? See the [model guide](https://microsoft.github.io/UFO/supported_models/overview/).
 
@@ -210,7 +249,7 @@ The integration of these benchmarks into UFO² is in separate repositories. Plea
 
 If you build on this work, please cite our the AgentOS framework:
 
-**UFO² – The Desktop AgentOS (2025)**  
+**UFO² – The Desktop AgentOS (2025)**  
 <https://arxiv.org/abs/2504.14603>
 ```bibtex
 @article{zhang2025ufo2,
@@ -221,7 +260,7 @@ If you build on this work, please cite our the AgentOS framework:
 }
 ```
 
-**UFO – A UI‑Focused Agent for Windows OS Interaction (2024)**  
+**UFO – A UI‑Focused Agent for Windows OS Interaction (2024)**  
 <https://arxiv.org/abs/2402.07939>
 ```bibtex
 @article{zhang2024ufo,
@@ -249,8 +288,8 @@ The UFO² team is actively working on the following features and improvements:
 ---
 
 ## 🎨 Related Projects
-- **TaskWeaver** — a code‑first LLM agent for data analytics: <https://github.com/microsoft/TaskWeaver>  
-- **LLM‑Brained GUI Agents: A Survey**: <https://arxiv.org/abs/2411.18279> • [GitHub](https://github.com/vyokky/LLM-Brained-GUI-Agents-Survey) • [Interactive site](https://vyokky.github.io/LLM-Brained-GUI-Agents-Survey/)
+- **TaskWeaver** — a code‑first LLM agent for data analytics: <https://github.com/microsoft/TaskWeaver>  
+- **LLM‑Brained GUI Agents: A Survey**: <https://arxiv.org/abs/2411.18279> • [GitHub](https://github.com/vyokky/LLM-Brained-GUI-Agents-Survey) • [Interactive site](https://vyokky.github.io/LLM-Brained-GUI-Agents-Survey/)
 
 ---
 
@@ -271,10 +310,10 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 ---
 
 ## ⚖️ License
-This repository is released under the [MIT License](LICENSE) (SPDX‑Identifier: MIT).  
+This repository is released under the [MIT License](LICENSE) (SPDX‑Identifier: MIT).  
 See [DISCLAIMER.md](DISCLAIMER.md) for privacy & safety notices.
 
 ---
 
-<p align="center"><sub>© Microsoft 2025 • UFO² is an open‑source project, not an official Windows feature.</sub></p>
+<p align="center"><sub>© Microsoft 2025 • UFO² is an open‑source project, not an official Windows feature.</sub></p>
 

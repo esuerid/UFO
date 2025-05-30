@@ -43,17 +43,17 @@ class Config:
         path = config_path
 
         try:
-            with open(path + "config.yaml", "r") as file:
+            with open(path + "config.yaml", "r", encoding='utf-8') as file:
                 yaml_data = yaml.safe_load(file)
             # Update configs with YAML data
             if yaml_data:
                 configs.update(yaml_data)
             if os.path.exists(path + "config_dev.yaml"):
-                with open(path + "config_dev.yaml", "r") as file:
+                with open(path + "config_dev.yaml", "r", encoding='utf-8') as file:
                     yaml_dev_data = yaml.safe_load(file)
                 configs.update(yaml_dev_data)
             if os.path.exists(path + "config_prices.yaml"):
-                with open(path + "config_prices.yaml", "r") as file:
+                with open(path + "config_prices.yaml", "r", encoding='utf-8') as file:
                     yaml_prices_data = yaml.safe_load(file)
                 configs.update(yaml_prices_data)
         except FileNotFoundError:
